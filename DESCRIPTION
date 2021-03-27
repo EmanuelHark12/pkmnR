@@ -1,4 +1,4 @@
-Package: pokeR
+Package: pkmnR
 Title: Collector of information about Pokemon
 Version: 0.0.0.9001
 Authors@R: 
