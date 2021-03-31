@@ -41,3 +41,15 @@ usethis::use_data(ghost, overwrite = TRUE)
 dragonize <- poke_type('dragon')
 dragon <- poke_df(dragonize)
 usethis::use_data(dragon, overwrite = TRUE)
+
+poisonize <- poke_type('poison')
+poison <- poke_df(poisonize)
+usethis::use_data(poison, overwrite = TRUE)
+
+waterize <- poke_type('water')
+water <- poke_df(waterize)
+usethis::use_data(water, overwrite = TRUE)
+
+grassize <- poke_type('grass')
+grass <- poke_df(grassize)
+usethis::use_data(grass, overwrite = TRUE)

@@ -15,7 +15,6 @@ poke_trainer <- function(){
   poke_list = list()
   for(i in seq(1,numero_de_pokemon)){
     moveset = c()
-    pp = c()
     pokemon = as.character(readline(prompt = 'Qual e o seu pokemon? '))
     info = poke_info(pokemon,show_moves=TRUE)
     level = as.numeric(readline(prompt = 'Qual e o nivel de seu pokemon? '))
@@ -25,23 +24,25 @@ poke_trainer <- function(){
       for(j in seq(1,4)){
         escolhido <- readline(prompt = 'Qual sera o golpe? ')
         if(is.element(escolhido,moves$Movimentos)){
-          moveset <- c(moveset,escolhido)
-          pp <- c(pp,as.numeric(info[[2]] %>% dplyr::filter(info[[2]]['Movimentos'] == escolhido) %>% dplyr::select('Uso')))
+          pp <- as.numeric(info[[2]] %>% dplyr::filter(info[[2]]['Movimentos'] == escolhido) %>% dplyr::select('Uso'))
+          moveset <- c(moveset,c(escolhido,pp))
         }
       }
     }
     else{
       for(j in seq(1,dim(moves)[1])){
         escolhido <- as.character(readline(prompt = 'Qual sera o golpe? '))
-        if(is.element(escolhido,moves)){
-          moves <- c(moves,escolhido)
-          pp <- c(pp,info[[2]] %>% dplyr::filter(info[[2]]['Movimento'] == escolhido) %>% dplyr::select('pp'))
+        if(is.element(escolhido,moves$Movimentos)){
+          pp <- as.numeric(info[[2]] %>% dplyr::filter(info[[2]]['Movimentos'] == escolhido) %>% dplyr::select('Uso'))
+          moveset <-c(moveset,c(escolhido,pp))
         }
       }
     }
     infos = c(pokemon,level)
-    df = data.frame(moveset,pp)
-    df = rbind(df,infos)
+    df = data.frame(t(infos))
+    move_final = data.frame(matrix(moveset,ncol=2,byrow = TRUE))
+    colnames(df) <- c('Moves','pp')
+    df = rbind(df,move_final)
     if(i != 1){
       poke_list[[i]] = df
     }
@@ -66,7 +67,7 @@ poke_print <- function(dados){
   for(i in seq(1,length(dados))){
     unset = unlist(dados[[i]],use.names = FALSE)
     n = length(unset)
-    df = htmlTable::htmlTable(dados[[i]][-n/2,],cgroup = c(paste0(dados[[i]][n/2,1],'- Lvl - ',dados[[i]][n/2,2]),''),n.cgroup = c(1))
+    df = htmlTable::htmlTable(dados[[i]][-1,],cgroup = c(paste0(dados[[i]][1,1],'- Lvl - ',dados[[i]][2,2]),''),n.cgroup = c(1))
     file = c(file,df)
   }
   return(htmlTable::htmlTable(file))
