@@ -1,13 +1,12 @@
 Package: pkmnR
 Title: Collector of information about Pokemon
-Version: 0.0.0.9001
+Version: 0.0.0.9003
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(person(given = "Emanuel",
+             family = "Hark",
+             role = c("aut", "cre"),
+             email = "emanuel.hark@gmail.com"))
+Description: This package contains collector of information about Pokemon through PokeApi and Serebii.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
