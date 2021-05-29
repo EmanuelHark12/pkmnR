@@ -13,7 +13,6 @@
 #'
 poke_info <- function(pokemon,show_moves = FALSE){
   `%>%` <- magrittr::`%>%`
-  print(pokemon)
   u_base <- "https://pokeapi.co/api/v2/pokemon/"
   barra <- ''
   end_point = paste0(pokemon,barra)
