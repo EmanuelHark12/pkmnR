@@ -1,3 +1,17 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # pkmnR
 
@@ -19,13 +33,11 @@ devtools::install_github("EmanuelHark12/pkmnR")
 With`{pkmnR}`, you can search information about a certain pokemon, like 
 Pikachu with a function `{poke_info}`
 
-``` r
+```{r}
 library(pkmnR)
+
 pikachu <- poke_info('pikachu')
-pikachu
-#> [1]     Nome  Regiao Tipo Principal Tipo Secundario hp attack defense special-attack special-defense speed Peso Altura id
-      1 pikachu   kanto       electric              NA 35     55      40             50              50    90   60      4 25
-  
+pikach
 ```
 
 ## Credits
